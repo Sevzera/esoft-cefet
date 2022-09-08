@@ -2,6 +2,8 @@ import * as dotenv from "dotenv";
 import express from "express";
 dotenv.config();
 
+import pessoaRouter from "./routes/pessoaRouter.js";
+
 export const server = async () => {
 	const server = express();
 	server.use(function (req, res, next) {
@@ -14,6 +16,8 @@ export const server = async () => {
 		next();
 	});
 	server.use(express.json());
+
+	server.use("/api/pessoa", pessoaRouter);
 
 	const port = process.env.PORT || 1999;
 	server.listen(port, () => {
