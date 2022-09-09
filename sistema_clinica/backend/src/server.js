@@ -2,10 +2,11 @@ import * as dotenv from "dotenv";
 import express from "express";
 dotenv.config();
 
-import pessoaRouter from "./routes/pessoaRouter.js";
+import * as routers from "./routers/index.js";
 
 export const server = async () => {
 	const server = express();
+
 	server.use(function (req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");
 		res.header("Access-Control-Allow-Headers", "*");
@@ -17,7 +18,7 @@ export const server = async () => {
 	});
 	server.use(express.json());
 
-	server.use("/api/pessoa", pessoaRouter);
+	server.use("/api/pessoa", routers.pessoa);
 
 	const port = process.env.PORT || 1999;
 	server.listen(port, () => {
