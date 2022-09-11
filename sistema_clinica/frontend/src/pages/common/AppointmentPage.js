@@ -7,14 +7,21 @@ function AppointmentPage() {
 	const [selectedDoctor, setSelectedDoctor] = useState("");
 	const [openSlots, setOpenSlots] = useState([]);
 
-	useEffect(() => {
-		setOpenSlots([7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]);
-		setSpecialties([1, 2, 3]);
+	useEffect(async () => {
+		const result = await fetch("http://localhost:1999/api/medicos", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				attributes: ["especialidade"]
+			})
+		});
+		const data = await result.json();
+		setSpecialties(data);
 	}, []);
 
-	async function getDoctors(e) {
-		setDoctors([1, 2, 3]);
-	}
+	async function getDoctors(e) {}
 
 	return (
 		<form

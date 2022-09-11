@@ -1,4 +1,4 @@
-import { pessoa as model } from "../models/index.js";
+import { endereco as model } from "../models/index.js";
 
 const controller = {
 	async insert(tuple) {
@@ -9,7 +9,7 @@ const controller = {
 			return error;
 		}
 	},
-
+	
 	async select(filter = {}) {
 		const { attributes, where } = filter;
 		try {

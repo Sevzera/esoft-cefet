@@ -18,7 +18,8 @@ export const server = async () => {
 	});
 	server.use(express.json());
 
-	server.use("/api/pessoa", routers.pessoa);
+	server.use("/api/agenda", routers.agenda);
+	server.use("/api/medico", routers.medico);
 
 	const port = process.env.PORT || 1999;
 	server.listen(port, () => {
