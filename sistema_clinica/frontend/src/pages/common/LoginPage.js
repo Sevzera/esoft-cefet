@@ -1,9 +1,10 @@
-function LoginPage() {
+function LoginPage({ handleLogin }) {
 	return (
 		<form
 			className="w-full h-full text-cs flex flex-col font-semibold"
 			onSubmit={(e) => {
 				e.preventDefault();
+				handleLogin(e);
 			}}
 		>
 			{" "}
