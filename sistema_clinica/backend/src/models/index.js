@@ -6,5 +6,3 @@ export { default as funcionario } from "./funcionario.js";
 export { default as medico } from "./medico.js";
 export { default as agenda } from "./agenda.js";
 export { default as endereco } from "./endereco.js";
-
-database.sync();

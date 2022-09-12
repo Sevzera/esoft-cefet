@@ -2,11 +2,13 @@ import * as dotenv from "dotenv";
 import express from "express";
 dotenv.config();
 
-import queryRouter from "./routers";
+import * as database from "./database.js";
+import queryRouter from "./routers/index.js";
 
 export const server = async () => {
 	const server = express();
-
+	database.init();
+	
 	server.use(function (req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");
 		res.header("Access-Control-Allow-Headers", "*");
