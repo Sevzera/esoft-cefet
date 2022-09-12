@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import "./css/style.css";
 import HomePage from "./pages/common/HomePage";
@@ -7,9 +7,12 @@ import GalleryPage from "./pages/common/GalleryPage";
 import NewAddressPage from "./pages/common/NewAddressPage";
 import AppointmentPage from "./pages/common/AppointmentPage";
 import LoginPage from "./pages/common/LoginPage";
+import AdminPage from "./pages/admin/AdminPage";
+import NewBlock from "./pages/admin/components/NewBlock";
+import ListBlock from "./pages/admin/components/ListBlock";
 
 function App() {
-	const [isAdmin, setIsAdmin] = React.useState(false);
+	const [isAdmin, setIsAdmin] = React.useState(true);
 	const [isDoctor, setIsDoctor] = React.useState(false);
 
 	async function handleLogin(e) {}
@@ -28,29 +31,64 @@ function App() {
 					/>
 					<Route
 						path="admin/novo-funcionario"
-						element={isAdmin ? <div></div> : <h1>ACESSO RESTRITO</h1>}
+						element={
+							isAdmin ? (
+								<AdminPage children={<NewBlock type="funcionario" />} />
+							) : (
+								<h1>ACESSO RESTRITO</h1>
+							)
+						}
 					/>
 					<Route
 						path="admin/novo-paciente"
-						element={isAdmin ? <div></div> : <h1>ACESSO RESTRITO</h1>}
+						element={
+							isAdmin ? (
+								<AdminPage children={<NewBlock type="paciente" />} />
+							) : (
+								<h1>ACESSO RESTRITO</h1>
+							)
+						}
 					/>
 					<Route
 						path="admin/lista/funcionarios"
-						element={isAdmin ? <div></div> : <h1>ACESSO RESTRITO</h1>}
+						element={
+							isAdmin ? (
+								<AdminPage children={<ListBlock type="funcionario" />} />
+							) : (
+								<h1>ACESSO RESTRITO</h1>
+							)
+						}
 					/>
 					<Route
 						path="admin/lista/pacientes"
-						element={isAdmin ? <div></div> : <h1>ACESSO RESTRITO</h1>}
+						element={
+							isAdmin ? (
+								<AdminPage children={<ListBlock type="paciente" />} />
+							) : (
+								<h1>ACESSO RESTRITO</h1>
+							)
+						}
 					/>
 					<Route
 						path="admin/lista/enderecos"
-						element={isAdmin ? <div></div> : <h1>ACESSO RESTRITO</h1>}
+						element={
+							isAdmin ? (
+								<AdminPage children={<ListBlock type="endereco" />} />
+							) : (
+								<h1>ACESSO RESTRITO</h1>
+							)
+						}
 					/>
 					<Route
 						path="admin/lista/consultas"
-						element={isAdmin ? <div></div> : <h1>ACESSO RESTRITO</h1>}
+						element={
+							isAdmin ? (
+								<AdminPage children={<ListBlock type="agenda" />} />
+							) : (
+								<h1>ACESSO RESTRITO</h1>
+							)
+						}
 					/>
-					<Route path="*" element={<h1>404: NOT FOUND</h1>} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

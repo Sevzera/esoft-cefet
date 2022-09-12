@@ -1,7 +1,7 @@
-function AdminPage() {
+function AdminPage({ children }) {
 	return (
-		<div>
-			<h1>Admin Page</h1>
+		<div className="w-full h-full flex flex-col justify-center items-center">
+			{children}
 		</div>
 	);
 }

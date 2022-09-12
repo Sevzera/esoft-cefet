@@ -1,27 +1,35 @@
-import { useState, useEffect } from "react";
+import React from "react";
 
 function AppointmentPage() {
-	const [specialties, setSpecialties] = useState([]);
-	const [selectedSpecialty, setSelectedSpecialty] = useState("");
-	const [doctors, setDoctors] = useState([]);
-	const [selectedDoctor, setSelectedDoctor] = useState("");
-	const [openSlots, setOpenSlots] = useState([]);
+	const [specialties, setSpecialties] = React.useState([]);
+	const [doctors, setDoctors] = React.useState([]);
+	const [openSlots, setOpenSlots] = React.useState([]);
 
-	useEffect(async () => {
-		const result = await fetch("http://localhost:1999/api/medicos", {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				attributes: ["especialidade"]
-			})
-		});
-		const data = await result.json();
+	async function getSpecialties() {
+		const res = await fetch("http://localhost:1999/especialidade");
+		const data = await res.json();
 		setSpecialties(data);
-	}, []);
+	}
 
-	async function getDoctors(e) {}
+	async function getDoctors(e) {
+		const res = await fetch(
+			`http://localhost:1999/medico?where="especialidade":"${e.target.value}"`
+		);
+		const data = await res.json();
+		setDoctors(data);
+	}
+
+	async function getOpenSlots(e) {
+		const res = await fetch(
+			`http://localhost:1999/agenda?where="medico":"${e.target.value}"`
+		);
+		const data = await res.json();
+		setOpenSlots(data);
+	}
+
+	React.useEffect(() => {
+		getSpecialties();
+	}, []);
 
 	return (
 		<form
@@ -47,7 +55,13 @@ function AppointmentPage() {
 					))}
 				</select>
 				<label>Profissional</label>
-				<select className="px-3 py-3 text-sm w-2/5 text-center">
+				<select
+					className="px-3 py-3 text-sm w-2/5 text-center"
+					onChange={(e) => {
+						e.preventDefault();
+						getOpenSlots(e);
+					}}
+				>
 					{doctors.map((doctor) => (
 						<option value={doctor}>{doctor}</option>
 					))}
