@@ -5,7 +5,7 @@ import { default as medico } from "./medico.js";
 import { default as agenda } from "./agenda.js";
 import { default as endereco } from "./endereco.js";
 
-await pessoa.hasOne(funcionario, {
+pessoa.hasOne(funcionario, {
 	foreignKey: "codigo",
 	sourceKey: "codigo",
 	onDelete: "CASCADE"

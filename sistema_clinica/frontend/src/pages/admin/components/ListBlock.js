@@ -5,9 +5,9 @@ const ListBlock = ({ type }) => {
 
 	const [list, setList] = React.useState([]);
 
-	async function updateList(query) {
+	async function updateList(spec) {
 		const res = await fetch(
-			"http://localhost:1999/api/" + type + (query ? "/?" + query : ""),
+			"http://localhost:1999/api/" + type + (spec ? "/?spec=" + spec : ""),
 			{
 				method: "GET",
 				headers: {
@@ -16,10 +16,13 @@ const ListBlock = ({ type }) => {
 			}
 		);
 		const data = await res.json();
+		console.log(data);
 		setList(data);
 	}
 
-	React.useEffect(() => {}, []);
+	React.useEffect(() => {
+		updateList("lista");
+	}, []);
 
 	return (
 		<div className="bg-gray-600 border-2 w-8/12 h-4/6 flex flex-col shadow-lg rounded-lg">

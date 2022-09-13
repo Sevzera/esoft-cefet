@@ -1,11 +1,11 @@
 import crud from "./utils/crud.js";
 import { medico } from "../models/index.js";
-import { funcionario } from "./index.js";
+import { funcionario as funcionario_router } from "./index.js";
 
 const controller = {
 	insert: async (tuple) => {
 		const { especialidade, crm } = tuple;
-		const common = await funcionario.insert(tuple);
+		const common = await funcionario_router.insert(tuple);
 		const codigo = common.codigo;
 		return await crud.c(medico, {
 			codigo,

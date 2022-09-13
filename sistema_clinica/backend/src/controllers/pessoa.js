@@ -1,12 +1,12 @@
 import crud from "./utils/crud.js";
 import { pessoa } from "../models/index.js";
-import { endereco } from "./index.js";
+import { endereco as endereco_router } from "./index.js";
 
 const controller = {
 	insert: async (tuple) => {
 		const { nome, email, cep, logradouro, bairro, cidade, estado, telefone } =
 			tuple;
-		await endereco.insert({
+		await endereco_router.insert({
 			cep,
 			logradouro,
 			bairro,
