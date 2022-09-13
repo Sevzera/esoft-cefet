@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import database from "../database.js";
 
-const pessoa = database.define("pessoa", {
+const pessoa = await database.define("pessoa", {
 	codigo: {
 		type: DataTypes.INTEGER,
 		primaryKey: true,
@@ -36,5 +36,7 @@ const pessoa = database.define("pessoa", {
 		allowNull: false
 	}
 });
+
+console.log(pessoa);
 
 export default pessoa;

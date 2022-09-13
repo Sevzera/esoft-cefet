@@ -1,17 +1,16 @@
 import { DataTypes } from "sequelize";
 import database from "../database.js";
-import { pessoa } from "./index.js";
 
-const paciente = database.define("paciente", {
+const paciente = await database.define("paciente", {
 	codigo: {
 		type: DataTypes.INTEGER,
 		primaryKey: true,
-		autoIncrement: true,
-		foreignKey: true,
-		references: {
-			model: pessoa,
-			key: "codigo"
-		}
+		autoIncrement: true
+		// foreignKey: true,
+		// references: {
+		// 	model: pessoa,
+		// 	key: "codigo"
+		// }
 	},
 	tipo_sanguineo: {
 		type: DataTypes.STRING(2),

@@ -7,7 +7,7 @@ import * as routers from "./routers/index.js";
 
 export const server = async () => {
 	const server = express();
-	database.sync();
+	await database.sync();
 	server.use(function (req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");
 		res.header("Access-Control-Allow-Headers", "*");
@@ -25,7 +25,7 @@ export const server = async () => {
 	server.use("/api/medico", routers.medico);
 	server.use("/api/paciente", routers.paciente);
 	server.use("/api/pessoa", routers.pessoa);
-
+	
 	const port = process.env.PORT || 1999;
 	server.listen(port, () => {
 		console.log(`Server is running on port ${port}`);

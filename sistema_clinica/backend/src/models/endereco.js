@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import database from "../database.js";
 
-const endereco = database.define("endereco", {
+const endereco = await database.define("endereco", {
 	cep: {
 		type: DataTypes.STRING,
 		allowNull: false
