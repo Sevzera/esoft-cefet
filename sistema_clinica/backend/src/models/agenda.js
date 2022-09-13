@@ -12,11 +12,11 @@ const agenda = await database.define("agenda", {
 		allowNull: false
 	},
 	data: {
-		type: DataTypes.DATEONLY,
+		type: DataTypes.STRING,
 		allowNull: false
 	},
 	horario: {
-		type: DataTypes.TIME,
+		type: DataTypes.STRING,
 		allowNull: false
 	},
 	nome: {

@@ -17,24 +17,22 @@ const controller = {
 	select: async (options) => {
 		const { spec } = options;
 		if (spec === "lista") {
-			const query = await crud.r(paciente, {
-				attributes: ["tipo_sanguineo", "peso", "altura"],
+			const pacientes = await crud.r(paciente, {
+				attributes: ["tipo_sanguineo"],
 				include: [
 					{
 						model: pessoa,
 						as: "pessoa",
-						attributes: ["nome"]
+						attributes: ["nome", "email", "telefone"]
 					}
 				]
 			});
-			// CORRIGIR
-			const qry = query.map((item) => {
-				const { tipo_sanguineo, peso, altura, pessoa } = item;
-				const { nome } = pessoa;
-				return { tipo_sanguineo, peso, altura, nome };
+			const query = pacientes.map((paciente) => {
+				const { tipo_sanguineo, pessoa } = paciente;
+				const { nome, email, telefone } = pessoa;
+				return { nome, tipo_sanguineo, email, telefone };
 			});
-		} else {
-			return await crud.r(paciente);
+			return query;
 		}
 	},
 	update: async (tuple, options) => {

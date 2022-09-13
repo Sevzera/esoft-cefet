@@ -5,9 +5,9 @@ const ListBlock = ({ type }) => {
 
 	const [list, setList] = React.useState([]);
 
-	async function updateList(spec) {
+	async function updateList(options = "") {
 		const res = await fetch(
-			"http://localhost:1999/api/" + type + (spec ? "/?spec=" + spec : ""),
+			"http://localhost:1999/api/" + type + (options ? "/?" + options : ""),
 			{
 				method: "GET",
 				headers: {
@@ -16,12 +16,15 @@ const ListBlock = ({ type }) => {
 			}
 		);
 		const data = await res.json();
-		console.log(data);
 		setList(data);
 	}
 
 	React.useEffect(() => {
-		updateList("lista");
+		if (type === "agenda") {
+			updateList("spec=lista&doc=a");
+		} else {
+			updateList("spec=lista");
+		}
 	}, []);
 
 	return (
