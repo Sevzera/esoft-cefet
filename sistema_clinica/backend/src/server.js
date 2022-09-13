@@ -3,7 +3,7 @@ import express from "express";
 dotenv.config();
 
 import database from "./database.js";
-import queryRouter from "./routers/index.js";
+import * as routers from "./routers/index.js";
 
 export const server = async () => {
 	const server = express();
@@ -19,12 +19,12 @@ export const server = async () => {
 	});
 	server.use(express.json());
 
-	server.use("/api/agenda", queryRouter);
-	server.use("/api/endereco", queryRouter);
-	server.use("/api/funcionario", queryRouter);
-	server.use("/api/medico", queryRouter);
-	server.use("/api/paciente", queryRouter);
-	server.use("/api/pessoa", queryRouter);
+	server.use("/api/agenda", routers.agenda);
+	server.use("/api/endereco", routers.endereco);
+	server.use("/api/funcionario", routers.funcionario);
+	server.use("/api/medico", routers.medico);
+	server.use("/api/paciente", routers.paciente);
+	server.use("/api/pessoa", routers.pessoa);
 
 	const port = process.env.PORT || 1999;
 	server.listen(port, () => {
