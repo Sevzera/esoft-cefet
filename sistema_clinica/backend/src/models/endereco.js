@@ -3,6 +3,7 @@ import { DataTypes } from "sequelize";
 let endereco;
 
 function init(database) {
+	if (endereco) return endereco;
 	endereco = database.define("endereco", {
 		cep: {
 			type: DataTypes.STRING,
@@ -27,4 +28,4 @@ function init(database) {
 	});
 }
 
-export default { endereco, init };
+export default init;

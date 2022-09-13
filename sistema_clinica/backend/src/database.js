@@ -7,9 +7,11 @@ let database;
 function init() {
 	if (database) return database;
 	database = new Sequelize(process.env.DB_URL, {
-		dialect: DB_DIALECT
+		dialect: process.env.DB_DIALECT
 	});
-	models.forEach((model) => model.init(database));
+	for (const model of models) {
+		model(database);
+	}
 }
 
-export default database;
+export default init;

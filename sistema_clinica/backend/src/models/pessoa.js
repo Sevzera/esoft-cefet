@@ -3,6 +3,7 @@ import { DataTypes } from "sequelize";
 let pessoa;
 
 function init(database) {
+	if (pessoa) return pessoa;
 	pessoa = database.define("pessoa", {
 		codigo: {
 			type: DataTypes.INTEGER,
@@ -40,4 +41,4 @@ function init(database) {
 	});
 }
 
-export default { pessoa, init };
+export default init;

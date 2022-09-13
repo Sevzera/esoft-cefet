@@ -4,6 +4,7 @@ import { funcionario } from "./index.js";
 let medico;
 
 function init(database) {
+	if (medico) return medico;
 	medico = database.define("medico", {
 		codigo: {
 			type: DataTypes.INTEGER,
@@ -26,4 +27,4 @@ function init(database) {
 	});
 }
 
-export default { medico, init };
+export default init;

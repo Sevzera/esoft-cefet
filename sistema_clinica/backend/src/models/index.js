@@ -1,5 +1,3 @@
-import database from "../database.js";
-
 export { default as pessoa } from "./pessoa.js";
 export { default as paciente } from "./paciente.js";
 export { default as funcionario } from "./funcionario.js";

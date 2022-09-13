@@ -4,6 +4,7 @@ import { medico } from "./index.js";
 let agenda;
 
 function init(database) {
+	if (agenda) return agenda;
 	agenda = database.define("agenda", {
 		codigo: {
 			type: DataTypes.INTEGER,
@@ -42,4 +43,4 @@ function init(database) {
 	});
 }
 
-export default { agenda, init };
+export default init;
