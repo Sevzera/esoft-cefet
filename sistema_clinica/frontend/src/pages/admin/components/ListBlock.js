@@ -5,22 +5,21 @@ const ListBlock = ({ type }) => {
 
 	const [list, setList] = React.useState([]);
 
-	async function updateList() {
-		let res = await fetch(`http://localhost:1999/api/pessoa`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json"
+	async function updateList(query) {
+		const res = await fetch(
+			"http://localhost:1999/api/" + type + (query ? "/?" + query : ""),
+			{
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json"
+				}
 			}
-		});
+		);
 		const data = await res.json();
-		console.log(data);
 		setList(data);
 	}
 
-	React.useEffect(() => {
-		console.log(type);
-		updateList();
-	}, []);
+	React.useEffect(() => {}, []);
 
 	return (
 		<div className="bg-gray-600 border-2 w-8/12 h-4/6 flex flex-col shadow-lg rounded-lg">
@@ -34,40 +33,10 @@ const ListBlock = ({ type }) => {
 						key={item.codigo}
 						className="flex flex-row justify-between items-center border-b-2 border-gray-300"
 					>
-						{type === "funcionario" && (
-							<>
-								<p className="text-center text-2xl font-bold">{item.codigo}</p>
-								<p className="text-center text-2xl font-bold">
-									{item.data_contrato}
-								</p>
-							</>
-						)}
-						{type === "endereco" && (
-							<>
-								<p className="text-center text-2xl font-bold">{item.cep}</p>
-								<p className="text-center text-2xl font-bold">
-									{item.logradouro}
-								</p>
-								<p className="text-center text-2xl font-bold">{item.bairro}</p>
-								<p className="text-center text-2xl font-bold">{item.cidade}</p>
-								<p className="text-center text-2xl font-bold">{item.estado}</p>
-							</>
-						)}
-						{type === "paciente" && (
-							<>
-								<p className="text-center text-2xl font-bold">{item.nome}</p>
-								<p className="text-center text-2xl font-bold">
-									{item.tipo_sanguineo}
-								</p>
-							</>
-						)}
-						{type === "agenda" && (
-							<>
-								<p className="text-center text-2xl font-bold">{item.data}</p>
-								<p className="text-center text-2xl font-bold">{item.horario}</p>
-								<p className="text-center text-2xl font-bold">{item.nome}</p>
-							</>
-						)}
+						{type === "funcionario" && <></>}
+						{type === "endereco" && <></>}
+						{type === "paciente" && <></>}
+						{type === "agenda" && <></>}
 					</li>
 				))} */}
 			</ul>

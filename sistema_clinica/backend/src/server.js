@@ -7,7 +7,8 @@ import * as routers from "./routers/index.js";
 
 export const server = async () => {
 	const server = express();
-	await database.sync({ force: true });
+	// await database.sync({ force: true });
+	await database.sync();
 	server.use(function (req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");
 		res.header("Access-Control-Allow-Headers", "*");

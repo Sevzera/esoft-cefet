@@ -1,24 +1,24 @@
 import express from "express";
-import { paciente as controller } from "../models/index.js";
+import { paciente } from "../controllers/index.js";
 
 const router = express.Router();
-router.get("/", async (req, res) => {
-	const result = await controller.select(req.query);
+router.post("/", async (req, res) => {
+	const result = await paciente.insert(req.body);
 	res.json(result);
 });
 
-router.post("/", async (req, res) => {
-	const result = await controller.insert(req.body);
+router.get("/", async (req, res) => {
+	const result = await paciente.select(req.query);
 	res.json(result);
 });
 
 router.put("/", async (req, res) => {
-	const result = await controller.update(req.body);
+	const result = await paciente.update(req.body);
 	res.json(result);
 });
 
 router.delete("/", async (req, res) => {
-	const result = await controller.remove(req.body);
+	const result = await paciente.remove(req.body);
 	res.json(result);
 });
 

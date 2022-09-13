@@ -6,68 +6,54 @@ function NewBlock({ type }) {
 	const input_box_style = "text-sm w-full text-center py-1";
 
 	async function handleSubmit(e) {
-		e.preventDefault();
-		const common = {
-			nome: e.target.nome.value,
-			email: e.target.email.value,
-			telefone: e.target.telefone.value,
-			cep: e.target.cep.value,
-			logradouro: e.target.logradouro.value,
-			bairro: e.target.bairro.value,
-			cidade: e.target.cidade.value,
-			estado: e.target.estado.value
+		const form = e.target;
+		let endpoint = "";
+		const url = "http://localhost:1999/api/";
+		let data = {
+			nome: form.nome.value,
+			email: form.email.value,
+			cep: form.cep.value,
+			logradouro: form.logradouro.value,
+			bairro: form.bairro.value,
+			cidade: form.cidade.value,
+			estado: form.estado.value,
+			telefone: form.telefone.value
 		};
-		const res = await fetch("http://localhost:1999/api/pessoa", {
+		if (type === "funcionario") {
+			data = {
+				...data,
+				data_contrato: form.data_contrato.value,
+				salario: form.salario.value,
+				senha_hash: form.senha_hash.value
+			};
+			if (form.cargo.value === "medico") {
+				data = {
+					...data,
+					crm: form.crm.value,
+					especialidade: form.especialidade.value
+				};
+				endpoint = "medico";
+			} else {
+				endpoint = "funcionario";
+			}
+		} else if (type === "paciente") {
+			data = {
+				...data,
+				tipo_sanguineo: form.tipo_sanguineo.value,
+				peso: form.peso.value,
+				altura: form.altura.value
+			};
+			endpoint = "paciente";
+		}
+		const result = await fetch(url + endpoint, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
 			},
-			body: JSON.stringify(common)
+			body: JSON.stringify(data)
 		});
-		const data = await res.json();
-		if (type === "funcionario") {
-			const funcionario = {
-				codigo: data.codigo,
-				data_contrato: e.target.data_contrato.value,
-				salario: e.target.salario.value,
-				senha_hash: e.target.senha_hash.value
-			};
-			await fetch("http://localhost:1999/api/funcionario", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify(funcionario)
-			});
-			if (e.target.cargo.value === "medico") {
-				const medico = {
-					codigo: data.codigo,
-					crm: e.target.crm.value,
-					especialidade: e.target.especialidade.value
-				};
-				await fetch("http://localhost:1999/api/medico", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify(medico)
-				});
-			}
-		} else if (type === "paciente") {
-			const paciente = {
-				codigo: data.codigo,
-				peso: e.target.peso.value,
-				altura: e.target.altura.value,
-				tipo_sanguineo: e.target.tipo_sanguineo.value
-			};
-			await fetch("http://localhost:1999/api/paciente", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify(paciente)
-			});
-		}
+		const res = await result.json();
+		console.log(res);
 	}
 
 	return (

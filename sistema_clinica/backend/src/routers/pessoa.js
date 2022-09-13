@@ -1,24 +1,24 @@
 import express from "express";
-import { pessoa as controller } from "../models/index.js";
+import { pessoa } from "../controllers/index.js";
 
 const router = express.Router();
-router.get("/", async (req, res) => {
-	const result = await controller.select(req.query);
+router.post("/", async (req, res) => {
+	const result = await pessoa.insert(req.body);
 	res.json(result);
 });
 
-router.post("/", async (req, res) => {
-	const result = await controller.insert(req.body);
+router.get("/", async (req, res) => {
+	const result = await pessoa.select(req.query);
 	res.json(result);
 });
 
 router.put("/", async (req, res) => {
-	const result = await controller.update(req.body);
+	const result = await pessoa.update(req.body);
 	res.json(result);
 });
 
 router.delete("/", async (req, res) => {
-	const result = await controller.remove(req.body);
+	const result = await pessoa.remove(req.body);
 	res.json(result);
 });
 

@@ -1,6 +1,38 @@
-import { c, r, u, d } from "./utils/crud.js";
-import { pessoa as model } from "../models/index.js";
+import crud from "./utils/crud.js";
+import { pessoa } from "../models/index.js";
+import { endereco } from "./index.js";
 
-const controller = {};
+const controller = {
+	insert: async (tuple) => {
+		const { nome, email, cep, logradouro, bairro, cidade, estado, telefone } =
+			tuple;
+		await endereco.insert({
+			cep,
+			logradouro,
+			bairro,
+			cidade,
+			estado
+		});
+		return await crud.c(pessoa, {
+			nome,
+			email,
+			cep,
+			logradouro,
+			bairro,
+			cidade,
+			estado,
+			telefone
+		});
+	},
+	select: async (options) => {
+		return await crud.r(pessoa, options);
+	},
+	update: async (tuple, options) => {
+		return await crud.u(pessoa, tuple, options);
+	},
+	remove: async (options) => {
+		return await crud.d(pessoa, options);
+	}
+};
 
 export default controller;

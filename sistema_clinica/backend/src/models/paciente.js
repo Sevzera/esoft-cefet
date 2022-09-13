@@ -4,20 +4,14 @@ import database from "../database.js";
 const paciente = await database.define("paciente", {
 	codigo: {
 		type: DataTypes.INTEGER,
-		primaryKey: true,
-		autoIncrement: true
-		// foreignKey: true,
-		// references: {
-		// 	model: pessoa,
-		// 	key: "codigo"
-		// }
+		primaryKey: true
 	},
 	tipo_sanguineo: {
-		type: DataTypes.STRING(2),
+		type: DataTypes.STRING,
 		allowNull: false
 	},
-	peso: DataTypes.STRING,
-	altura: DataTypes.STRING
+	peso: DataTypes.REAL,
+	altura: DataTypes.REAL
 });
 
 export default paciente;

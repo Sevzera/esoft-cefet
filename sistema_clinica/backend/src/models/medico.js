@@ -4,20 +4,14 @@ import database from "../database.js";
 const medico = await database.define("medico", {
 	codigo: {
 		type: DataTypes.INTEGER,
-		primaryKey: true,
-		autoIncrement: true
-		// foreignKey: true,
-		// references: {
-		// 	model: funcionario,
-		// 	key: "codigo"
-		// }
+		primaryKey: true
 	},
 	especialidade: {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	CRM: {
-		type: DataTypes.INTEGER,
+	crm: {
+		type: DataTypes.STRING,
 		allowNull: false
 	}
 });

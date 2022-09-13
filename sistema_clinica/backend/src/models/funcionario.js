@@ -4,13 +4,7 @@ import database from "../database.js";
 const funcionario = await database.define("funcionario", {
 	codigo: {
 		type: DataTypes.INTEGER,
-		primaryKey: true,
-		autoIncrement: true
-		// foreignKey: true,
-		// references: {
-		// 	model: pessoa,
-		// 	key: "codigo"
-		// }
+		primaryKey: true
 	},
 	data_contrato: {
 		type: DataTypes.DATEONLY,

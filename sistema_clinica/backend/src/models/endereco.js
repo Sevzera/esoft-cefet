@@ -4,7 +4,8 @@ import database from "../database.js";
 const endereco = await database.define("endereco", {
 	cep: {
 		type: DataTypes.STRING,
-		allowNull: false
+		allowNull: false,
+		primaryKey: true
 	},
 	logradouro: {
 		type: DataTypes.STRING,
@@ -19,7 +20,7 @@ const endereco = await database.define("endereco", {
 		allowNull: false
 	},
 	estado: {
-		type: DataTypes.STRING(2),
+		type: DataTypes.STRING,
 		allowNull: false
 	}
 });

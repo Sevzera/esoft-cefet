@@ -10,11 +10,6 @@ const agenda = await database.define("agenda", {
 	codigo_medico: {
 		type: DataTypes.INTEGER,
 		allowNull: false
-		// foreignKey: true,
-		// references: {
-		// 	model: medico,
-		// 	key: "codigo"
-		// }
 	},
 	data: {
 		type: DataTypes.DATEONLY,
