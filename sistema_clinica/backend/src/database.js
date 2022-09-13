@@ -5,13 +5,16 @@ dotenv.config();
 
 let database;
 function init() {
-	if (database) return database;
 	database = new Sequelize(process.env.DB_URL, {
 		dialect: process.env.DB_DIALECT
 	});
 	for (const model of models) {
-		model(database);
+		model.init(database);
 	}
 }
 
-export default init;
+export default function connect() {
+	if (database) return database;
+	init();
+	return database;
+}
