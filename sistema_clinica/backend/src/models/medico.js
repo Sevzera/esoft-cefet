@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import database from "./database.js";
+import database from "../database.js";
 import { funcionario } from "./index.js";
 
 const medico = database.define("medico", {

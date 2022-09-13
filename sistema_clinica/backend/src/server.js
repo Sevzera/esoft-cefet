@@ -6,7 +6,7 @@ import database from "./database.js";
 import queryRouter from "./routers/index.js";
 
 export const server = async () => {
-	const server = express();	
+	const server = express();
 	database.sync();
 	server.use(function (req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");
