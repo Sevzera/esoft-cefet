@@ -21,6 +21,7 @@ const ListBlock = ({ type }) => {
 
 	React.useEffect(() => {
 		if (type === "agenda") {
+			// DEFINIR DOC -> CRM
 			updateList("spec=lista&doc=a");
 		} else {
 			updateList("spec=lista");
