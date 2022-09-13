@@ -37,6 +37,4 @@ const pessoa = await database.define("pessoa", {
 	}
 });
 
-console.log(pessoa);
-
 export default pessoa;

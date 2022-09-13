@@ -1,6 +1,3 @@
-import database from "../database.js";
-await database.sync();
-
 import { default as pessoa } from "./pessoa.js";
 import { default as paciente } from "./paciente.js";
 import { default as funcionario } from "./funcionario.js";
@@ -8,7 +5,7 @@ import { default as medico } from "./medico.js";
 import { default as agenda } from "./agenda.js";
 import { default as endereco } from "./endereco.js";
 
-pessoa.hasOne(funcionario, {
+await pessoa.hasOne(funcionario, {
 	foreignKey: "codigo",
 	sourceKey: "codigo",
 	onDelete: "CASCADE"
@@ -48,7 +45,5 @@ agenda.belongsTo(medico, {
 	sourceKey: "codigo",
 	onDelete: "CASCADE"
 });
-
-database.sync({ force: true });
 
 export { pessoa, paciente, funcionario, medico, agenda, endereco };
