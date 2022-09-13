@@ -3,7 +3,7 @@ import { medico } from "./index.js";
 
 let agenda;
 
-function init(database) {
+export function init(database) {
 	if (agenda) return agenda;
 	agenda = database.define("agenda", {
 		codigo: {
@@ -42,5 +42,3 @@ function init(database) {
 		}
 	});
 }
-
-export default init;

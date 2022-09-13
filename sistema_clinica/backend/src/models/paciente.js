@@ -3,7 +3,7 @@ import { pessoa } from "./index.js";
 
 let paciente;
 
-function init(database) {
+export function init(database) {
 	if (paciente) return paciente;
 	paciente = database.define("paciente", {
 		codigo: {
@@ -24,5 +24,3 @@ function init(database) {
 		altura: DataTypes.STRING
 	});
 }
-
-export default init;

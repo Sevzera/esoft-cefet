@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 
 let endereco;
 
-function init(database) {
+export function init(database) {
 	if (endereco) return endereco;
 	endereco = database.define("endereco", {
 		cep: {
@@ -27,5 +27,3 @@ function init(database) {
 		}
 	});
 }
-
-export default init;

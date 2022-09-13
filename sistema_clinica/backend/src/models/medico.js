@@ -3,7 +3,7 @@ import { funcionario } from "./index.js";
 
 let medico;
 
-function init(database) {
+export function init(database) {
 	if (medico) return medico;
 	medico = database.define("medico", {
 		codigo: {
@@ -26,5 +26,3 @@ function init(database) {
 		}
 	});
 }
-
-export default init;

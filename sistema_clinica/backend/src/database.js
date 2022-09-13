@@ -3,18 +3,17 @@ import Sequelize from "sequelize";
 import * as models from "./models/index.js";
 dotenv.config();
 
-let database;
-function init() {
-	database = new Sequelize(process.env.DB_URL, {
-		dialect: process.env.DB_DIALECT
-	});
-	for (const model of models) {
-		model.init(database);
+let connection;
+async function connect() {
+	if (!connection) {
+		connection = new Sequelize(process.env.DB_URL, {
+			dialect: process.env.DB_DIALECT
+		});
+		for (const i in models) {
+			models[i].init(connection);
+		}
 	}
+	return connection;
 }
 
-export default function connect() {
-	if (database) return database;
-	init();
-	return database;
-}
+export default connect();
