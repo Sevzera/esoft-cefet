@@ -27,6 +27,25 @@ const controller = {
 			});
 			console.log(query);
 			return query;
+		} else if (spec === "agendar") {
+			console.log(options);
+			const { date, doc } = options;
+			const agendas = await crud.r(agenda, {
+				attributes: ["horario"],
+				where: {
+					data: date
+				},
+				include: [
+					{
+						model: medico,
+						as: "medico",
+						where: doc ? { codigo: doc } : {}
+					}
+				]
+			});
+			const query = agendas.map((agenda) => agenda.horario);
+			console.log(query);
+			return query;
 		}
 	},
 	update: async (tuple, options) => {

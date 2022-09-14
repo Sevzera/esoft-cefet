@@ -20,7 +20,7 @@ const controller = {
 			const { especialidade } = options;
 			if (especialidade) {
 				const medicos = await crud.r(medico, {
-					attributes: ["crm"],
+					attributes: ["codigo"],
 					where: { especialidade },
 					include: [
 						{
@@ -36,21 +36,18 @@ const controller = {
 						}
 					]
 				});
-				console.log(medicos);
 				query = medicos.map((medico) => {
-					const { funcionario, crm } = medico;
+					const { codigo, funcionario } = medico;
 					const { pessoa } = funcionario;
 					const { nome } = pessoa;
-					return { nome, crm };
+					return { codigo, nome };
 				});
 			} else {
-				const especialidades = await crud.r(medico, {
+				const medicos = await crud.r(medico, {
 					attributes: ["especialidade"],
 					group: ["especialidade"]
 				});
-				query = especialidades.map((especialidade) => {
-					return especialidade.especialidade;
-				});
+				query = medicos.map((especialidade) => especialidade.especialidade);
 			}
 			console.log(query);
 			return query;
