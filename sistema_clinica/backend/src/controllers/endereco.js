@@ -16,6 +16,19 @@ const controller = {
 				return { cep, logradouro, bairro, cidade, estado };
 			});
 			return query;
+		} else if (spec === "autopr") {
+			const { cep } = options;
+			const enderecos = await crud.r(endereco, {
+				attributes: ["logradouro", "bairro", "cidade", "estado"],
+				where: {
+					cep: cep
+				}
+			});
+			const query = enderecos.map((endereco) => {
+				const { logradouro, bairro, cidade, estado } = endereco;
+				return { logradouro, bairro, cidade, estado };
+			});
+			return query;
 		}
 	},
 	update: async (tuple, options) => {

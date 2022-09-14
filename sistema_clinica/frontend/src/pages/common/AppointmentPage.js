@@ -40,7 +40,7 @@ function AppointmentPage() {
 		);
 	}
 
-	async function handleSubmite(e) {
+	async function handleSubmit(e) {
 		const form = e.target;
 		const data = {
 			codigo_medico: selectedDoctorCode,
@@ -70,7 +70,7 @@ function AppointmentPage() {
 			className="w-full h-full text-cs flex flex-col font-semibold"
 			onSubmit={(e) => {
 				e.preventDefault();
-				handleSubmite(e);
+				handleSubmit(e);
 			}}
 		>
 			<div className="flex flex-col h-full w-full justify-around items-center">
