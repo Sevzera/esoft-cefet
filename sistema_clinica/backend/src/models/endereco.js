@@ -7,22 +7,10 @@ const endereco = await database.define("endereco", {
 		allowNull: false,
 		primaryKey: true
 	},
-	logradouro: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
-	bairro: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
-	cidade: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
-	estado: {
-		type: DataTypes.STRING,
-		allowNull: false
-	}
+	logradouro: DataTypes.STRING,
+	bairro: DataTypes.STRING,
+	cidade: DataTypes.STRING,
+	estado: DataTypes.STRING
 });
 
 export default endereco;

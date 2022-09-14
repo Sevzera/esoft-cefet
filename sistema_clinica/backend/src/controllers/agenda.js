@@ -25,10 +25,8 @@ const controller = {
 				const { crm, especialidade } = medico;
 				return { data, horario, nome, email, telefone, crm, especialidade };
 			});
-			console.log(query);
 			return query;
 		} else if (spec === "agendar") {
-			console.log(options);
 			const { date, doc } = options;
 			const agendas = await crud.r(agenda, {
 				attributes: ["horario"],
@@ -44,7 +42,6 @@ const controller = {
 				]
 			});
 			const query = agendas.map((agenda) => agenda.horario);
-			console.log(query);
 			return query;
 		}
 	},

@@ -23,14 +23,8 @@ const agenda = await database.define("agenda", {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	email: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
-	telefone: {
-		type: DataTypes.STRING,
-		allowNull: false
-	}
+	email: DataTypes.STRING,
+	telefone: DataTypes.STRING
 });
 
 export default agenda;

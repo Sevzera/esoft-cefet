@@ -6,10 +6,7 @@ const paciente = await database.define("paciente", {
 		type: DataTypes.INTEGER,
 		primaryKey: true
 	},
-	tipo_sanguineo: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
+	tipo_sanguineo: DataTypes.STRING,
 	peso: DataTypes.REAL,
 	altura: DataTypes.REAL
 });

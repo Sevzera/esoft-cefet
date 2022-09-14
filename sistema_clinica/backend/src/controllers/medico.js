@@ -49,7 +49,6 @@ const controller = {
 				});
 				query = medicos.map((especialidade) => especialidade.especialidade);
 			}
-			console.log(query);
 			return query;
 		}
 		return await crud.r(medico, options);

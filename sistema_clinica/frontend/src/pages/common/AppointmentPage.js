@@ -81,11 +81,14 @@ function AppointmentPage() {
 				<select
 					className="px-3 py-3 text-sm w-2/5 text-center"
 					name="especialidade"
-					onClick={(e) => {
+					onChange={(e) => {
 						e.preventDefault();
 						getDoctors(e);
 					}}
 				>
+					<option hidden selected>
+						Especialidade
+					</option>
 					{specialties.map((specialty) => (
 						<option value={specialty}>{specialty}</option>
 					))}
@@ -94,11 +97,14 @@ function AppointmentPage() {
 				<select
 					className="px-3 py-3 text-sm w-2/5 text-center"
 					name="medico_nome"
-					onClick={(e) => {
+					onChange={(e) => {
 						e.preventDefault();
 						setSelectedDoctorCode(e.target.value);
 					}}
 				>
+					<option hidden selected>
+						Profissional
+					</option>
 					{doctors.map((doctor) => (
 						<option value={doctor.codigo}>{doctor.nome}</option>
 					))}
@@ -115,6 +121,9 @@ function AppointmentPage() {
 				/>
 				<label>Horário</label>
 				<select className="px-3 py-3 text-sm w-2/5 text-center" name="horario">
+					<option hidden selected>
+						Horário
+					</option>
 					{openSlots.map((slot) => (
 						<option value={slot}>{slot + ":00"}</option>
 					))}

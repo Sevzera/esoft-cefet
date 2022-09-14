@@ -11,30 +11,15 @@ const pessoa = await database.define("pessoa", {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	email: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
+	email: DataTypes.STRING,
 	cep: {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	logradouro: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
-	bairro: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
-	cidade: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
-	estado: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
+	logradouro: DataTypes.STRING,
+	bairro: DataTypes.STRING,
+	cidade: DataTypes.STRING,
+	estado: DataTypes.STRING,
 	telefone: {
 		type: DataTypes.STRING,
 		allowNull: false

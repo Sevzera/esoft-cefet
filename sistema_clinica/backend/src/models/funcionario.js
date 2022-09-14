@@ -6,14 +6,8 @@ const funcionario = await database.define("funcionario", {
 		type: DataTypes.INTEGER,
 		primaryKey: true
 	},
-	data_contrato: {
-		type: DataTypes.DATEONLY,
-		allowNull: false
-	},
-	salario: {
-		type: DataTypes.REAL,
-		allowNull: false
-	},
+	data_contrato: DataTypes.STRING,
+	salario: DataTypes.REAL,
 	senha_hash: {
 		type: DataTypes.STRING,
 		allowNull: false

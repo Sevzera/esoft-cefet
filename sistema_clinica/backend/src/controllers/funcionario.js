@@ -60,7 +60,6 @@ const controller = {
 					}
 				]
 			});
-			console.log(funcionarios);
 			if (funcionarios[0]) {
 				const { pessoa, medico } = funcionarios[0];
 				const { email } = pessoa;
