@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListBlock = ({ type }) => {
+const ListBlock = ({ type, crm }) => {
 	const label_style = "text-center text-4xl font-bold";
 
 	const [list, setList] = React.useState([]);
@@ -21,8 +21,7 @@ const ListBlock = ({ type }) => {
 
 	React.useEffect(() => {
 		if (type === "agenda") {
-			// DEFINIR DOC -> CRM
-			updateList("spec=lista&doc=a");
+			crm ? updateList(`spec=lista&doc=${crm}`) : updateList("spec=lista");
 		} else {
 			updateList("spec=lista");
 		}
@@ -35,17 +34,85 @@ const ListBlock = ({ type }) => {
 			{type === "endereco" && <h1 className={label_style}>ENDERECOS</h1>}
 			{type === "agenda" && <h1 className={label_style}>CONSULTAS</h1>}
 			<ul className="flex flex-col mt-[30px] overflow-auto bg-white odd:bg-white even:bg-slate-50">
-				{/* {list.map((item) => (
+				{list.map((item) => (
 					<li
 						key={item.codigo}
 						className="flex flex-row justify-between items-center border-b-2 border-gray-300"
 					>
-						{type === "funcionario" && <></>}
-						{type === "endereco" && <></>}
-						{type === "paciente" && <></>}
-						{type === "agenda" && <></>}
+						{type === "funcionario" && (
+							<>
+								<span className="text-2xl font-bold ml-[30px]">
+									{item.nome}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.salario}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.email}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.telefone}
+								</span>
+							</>
+						)}
+						{type === "endereco" && (
+							<>
+								<span className="text-2xl font-bold mr-[30px]">{item.cep}</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.logradouro}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.bairro}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.cidade}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.estado}
+								</span>
+							</>
+						)}
+						{type === "paciente" && (
+							<>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.nome}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.tipo_sanguineo}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.email}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.telefone}
+								</span>
+							</>
+						)}
+						{type === "agenda" && (
+							<>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.data}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.horario}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.nome}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.email}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.telefone}
+								</span>
+								<span className="text-2xl font-bold mr-[30px]">{item.crm}</span>
+								<span className="text-2xl font-bold mr-[30px]">
+									{item.especialidade}
+								</span>
+							</>
+						)}
 					</li>
-				))} */}
+				))}
 			</ul>
 		</div>
 	);

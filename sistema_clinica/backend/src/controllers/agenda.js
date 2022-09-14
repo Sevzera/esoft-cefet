@@ -6,8 +6,9 @@ const controller = {
 		return await crud.c(agenda, tuple);
 	},
 	select: async (options) => {
-		const { spec, doc } = options;
+		const { spec } = options;
 		if (spec === "lista") {
+			const { doc } = options || null;
 			const agendas = await crud.r(agenda, {
 				attributes: ["data", "horario", "nome", "email", "telefone"],
 				include: [
@@ -15,16 +16,14 @@ const controller = {
 						model: medico,
 						as: "medico",
 						attributes: ["crm", "especialidade"],
-						where: { crm: doc }
+						where: doc ? { crm: doc } : {}
 					}
 				]
 			});
 			const query = agendas.map((agenda) => {
 				const { data, horario, nome, email, telefone, medico } = agenda;
 				const { crm, especialidade } = medico;
-				if (doc === crm) {
-					return { data, horario, nome, email, telefone, crm, especialidade };
-				}
+				return { data, horario, nome, email, telefone, crm, especialidade };
 			});
 			console.log(query);
 			return query;

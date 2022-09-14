@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-function Nav({ isAdmin }) {
+function Nav({ isLogged }) {
 	return (
 		<nav className="flex flex-row justify-around w-full h-full bg-stone-500">
-			{isAdmin ? (
+			{isLogged ? (
 				<div className="flex flex-row justify-around items-center w-11/12">
 					<Link to="admin/novo-funcionario">Cadastrar funcionario</Link>
 					<Link to="admin/novo-paciente">Cadastrar paciente</Link>
@@ -21,7 +21,13 @@ function Nav({ isAdmin }) {
 				</div>
 			)}
 			<div className="flex flex-col justify-end items-center w-1/12">
-				<Link to="/login">Login</Link>
+				{isLogged ? (
+					<Link to="/home" onClick={() => handleLogout}>
+						Logout
+					</Link>
+				) : (
+					<Link to="/login">Login</Link>
+				)}
 			</div>
 		</nav>
 	);

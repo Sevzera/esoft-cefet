@@ -12,27 +12,69 @@ import NewBlock from "./pages/admin/components/NewBlock";
 import ListBlock from "./pages/admin/components/ListBlock";
 
 function App() {
-	const [isAdmin, setIsAdmin] = React.useState(true);
-	const [isDoctor, setIsDoctor] = React.useState(false);
+	const [user, setUser] = React.useState({
+		isLogged: false,
+		crm: false
+	});
 
-	async function handleLogin(e) {}
+	async function handleLogin(e) {
+		e.preventDefault();
+		const form = e.target;
+		const email = form.email.value;
+		const senha_hash = form.senha_hash.value;
+		const res = await fetch(
+			"http://localhost:1999/api/funcionario/?spec=login" +
+				`&email=${email}&senha_hash=${senha_hash}`,
+			{
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json"
+				}
+			}
+		);
+		const result = await res.json();
+		if (result) {
+			alert("Login efetuado com sucesso!");
+			setUser({
+				isLogged: true,
+				crm: result.crm || false
+			});
+		} else {
+			alert("Login falhou!");
+		}
+	}
+
+	async function handleLogout() {
+		setUser({
+			isLogged: false,
+			crm: false
+		});
+	}
 
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<Layout isAdmin={isAdmin} />}>
+				<Route
+					path="/"
+					element={<Layout handleLogout={() => handleLogout()} user={user} />}
+				>
 					<Route path="home" element={<HomePage />} />
 					<Route path="galeria" element={<GalleryPage />} />
 					<Route path="novo-endereco" element={<NewAddressPage />} />
 					<Route path="agendamento" element={<AppointmentPage />} />
 					<Route
 						path="login"
-						element={<LoginPage handleLogin={(e) => handleLogin(e)} />}
+						element={
+							<LoginPage
+								handleLogin={(e) => handleLogin(e)}
+								isLogged={user.isLogged}
+							/>
+						}
 					/>
 					<Route
 						path="admin/novo-funcionario"
 						element={
-							isAdmin ? (
+							user.isLogged ? (
 								<AdminPage children={<NewBlock type="funcionario" />} />
 							) : (
 								<h1>ACESSO RESTRITO</h1>
@@ -42,7 +84,7 @@ function App() {
 					<Route
 						path="admin/novo-paciente"
 						element={
-							isAdmin ? (
+							user.isLogged ? (
 								<AdminPage children={<NewBlock type="paciente" />} />
 							) : (
 								<h1>ACESSO RESTRITO</h1>
@@ -52,7 +94,7 @@ function App() {
 					<Route
 						path="admin/lista/funcionarios"
 						element={
-							isAdmin ? (
+							user.isLogged ? (
 								<AdminPage children={<ListBlock type="funcionario" />} />
 							) : (
 								<h1>ACESSO RESTRITO</h1>
@@ -62,7 +104,7 @@ function App() {
 					<Route
 						path="admin/lista/pacientes"
 						element={
-							isAdmin ? (
+							user.isLogged ? (
 								<AdminPage children={<ListBlock type="paciente" />} />
 							) : (
 								<h1>ACESSO RESTRITO</h1>
@@ -72,7 +114,7 @@ function App() {
 					<Route
 						path="admin/lista/enderecos"
 						element={
-							isAdmin ? (
+							user.isLogged ? (
 								<AdminPage children={<ListBlock type="endereco" />} />
 							) : (
 								<h1>ACESSO RESTRITO</h1>
@@ -82,8 +124,10 @@ function App() {
 					<Route
 						path="admin/lista/consultas"
 						element={
-							isAdmin ? (
-								<AdminPage children={<ListBlock type="agenda" />} />
+							user.isLogged ? (
+								<AdminPage
+									children={<ListBlock type="agenda" crm={user.crm} />}
+								/>
 							) : (
 								<h1>ACESSO RESTRITO</h1>
 							)

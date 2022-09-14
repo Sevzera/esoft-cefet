@@ -9,17 +9,10 @@ const controller = {
 		const { spec } = options;
 		if (spec === "lista") {
 			const enderecos = await crud.r(endereco, {
-				attributes: [
-					"cep",
-					"logradouro",
-					"bairro",
-					"cidade",
-					"estado"
-				]
+				attributes: ["cep", "logradouro", "bairro", "cidade", "estado"]
 			});
 			const query = enderecos.map((endereco) => {
-				const { cep, logradouro, bairro, cidade, estado } =
-					endereco;
+				const { cep, logradouro, bairro, cidade, estado } = endereco;
 				return { cep, logradouro, bairro, cidade, estado };
 			});
 			return query;

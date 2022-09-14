@@ -3,28 +3,19 @@ import React from "react";
 function AppointmentPage() {
 	const [specialties, setSpecialties] = React.useState([]);
 	const [doctors, setDoctors] = React.useState([]);
-	const [openSlots, setOpenSlots] = React.useState([]);
 
 	async function getSpecialties() {
-		const res = await fetch("http://localhost:1999/especialidade");
+		const res = await fetch("http://localhost:1999/api/medico?spec=agendar");
 		const data = await res.json();
 		setSpecialties(data);
 	}
 
 	async function getDoctors(e) {
 		const res = await fetch(
-			`http://localhost:1999/medico?where="especialidade":"${e.target.value}"`
+			`http://localhost:1999/api/medico?spec=agendar&especialidade=${e.target.value}`
 		);
 		const data = await res.json();
 		setDoctors(data);
-	}
-
-	async function getOpenSlots(e) {
-		const res = await fetch(
-			`http://localhost:1999/agenda?where="medico":"${e.target.value}"`
-		);
-		const data = await res.json();
-		setOpenSlots(data);
 	}
 
 	React.useEffect(() => {
@@ -55,13 +46,7 @@ function AppointmentPage() {
 					))}
 				</select>
 				<label>Profissional</label>
-				<select
-					className="px-3 py-3 text-sm w-2/5 text-center"
-					onChange={(e) => {
-						e.preventDefault();
-						getOpenSlots(e);
-					}}
-				>
+				<select className="px-3 py-3 text-sm w-2/5 text-center">
 					{doctors.map((doctor) => (
 						<option value={doctor}>{doctor}</option>
 					))}

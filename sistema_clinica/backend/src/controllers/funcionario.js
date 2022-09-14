@@ -42,6 +42,36 @@ const controller = {
 				return { nome, salario, email, telefone };
 			});
 			return query;
+		} else if (spec === "login") {
+			const { email, senha_hash } = options;
+			const funcionarios = await crud.r(funcionario, {
+				where: { senha_hash: senha_hash },
+				include: [
+					{
+						model: pessoa,
+						as: "pessoa",
+						attributes: ["email"],
+						where: { email: email }
+					},
+					{
+						model: medico,
+						as: "medico",
+						attributes: ["crm"]
+					}
+				]
+			});
+			console.log(funcionarios);
+			if (funcionarios[0]) {
+				const { pessoa, medico } = funcionarios[0];
+				const { email } = pessoa;
+				if (medico) {
+					const { crm } = medico;
+					return { email, crm };
+				}
+				return { email };
+			} else {
+				return null;
+			}
 		}
 	},
 
