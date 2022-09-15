@@ -1,15 +1,14 @@
-import crud from "./utils/crud.js";
 import { agenda, medico } from "../models/index.js";
 
-const controller = {
+const agendaController = {
 	insert: async (tuple) => {
-		return await crud.c(agenda, tuple);
+		return await agenda.create(tuple);
 	},
 	select: async (options) => {
 		const { spec } = options;
 		if (spec === "lista") {
 			const { doc } = options || null;
-			const agendas = await crud.r(agenda, {
+			const agendas = await agenda.findAll({
 				attributes: ["data", "horario", "nome", "email", "telefone"],
 				include: [
 					{
@@ -28,7 +27,7 @@ const controller = {
 			return query;
 		} else if (spec === "agendar") {
 			const { date, doc } = options;
-			const agendas = await crud.r(agenda, {
+			const agendas = await agenda.findAll({
 				attributes: ["horario"],
 				where: {
 					data: date
@@ -44,13 +43,7 @@ const controller = {
 			const query = agendas.map((agenda) => agenda.horario);
 			return query;
 		}
-	},
-	update: async (tuple, options) => {
-		return await crud.u(agenda, tuple, options);
-	},
-	remove: async (options) => {
-		return await crud.d(agenda, options);
 	}
 };
 
-export default controller;
+export default agendaController;

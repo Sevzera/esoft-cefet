@@ -1,14 +1,13 @@
-import crud from "./utils/crud.js";
 import { endereco } from "../models/index.js";
 
-const controller = {
+const enderecoController = {
 	insert: async (tuple) => {
-		return await crud.c(endereco, tuple);
+		return await endereco.create(tuple);
 	},
 	select: async (options) => {
 		const { spec } = options;
 		if (spec === "lista") {
-			const enderecos = await crud.r(endereco, {
+			const enderecos = await endereco.findAll({
 				attributes: ["cep", "logradouro", "bairro", "cidade", "estado"]
 			});
 			const query = enderecos.map((endereco) => {
@@ -18,7 +17,7 @@ const controller = {
 			return query;
 		} else if (spec === "autopr") {
 			const { cep } = options;
-			const enderecos = await crud.r(endereco, {
+			const enderecos = await endereco.findAll({
 				attributes: ["logradouro", "bairro", "cidade", "estado"],
 				where: {
 					cep: cep
@@ -30,13 +29,7 @@ const controller = {
 			});
 			return query;
 		}
-	},
-	update: async (tuple, options) => {
-		return await crud.u(endereco, tuple, options);
-	},
-	remove: async (options) => {
-		return await crud.d(endereco, options);
 	}
 };
 
-export default controller;
+export default enderecoController;

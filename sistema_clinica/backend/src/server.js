@@ -20,12 +20,12 @@ export const server = async () => {
 	});
 	server.use(express.json());
 
-	server.use("/api/agenda", routers.agenda);
-	server.use("/api/endereco", routers.endereco);
-	server.use("/api/funcionario", routers.funcionario);
-	server.use("/api/medico", routers.medico);
-	server.use("/api/paciente", routers.paciente);
-	server.use("/api/pessoa", routers.pessoa);
+	server.use("/api/agenda", routers.agendaRouter);
+	server.use("/api/endereco", routers.enderecoRouter);
+	server.use("/api/funcionario", routers.funcionarioRouter);
+	server.use("/api/medico", routers.medicoRouter);
+	server.use("/api/paciente", routers.pacienteRouter);
+	server.use("/api/pessoa", routers.pessoaRouter);
 
 	const port = process.env.PORT || 1999;
 	server.listen(port, () => {

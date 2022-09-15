@@ -1,13 +1,12 @@
-import crud from "./utils/crud.js";
 import { paciente, pessoa } from "../models/index.js";
-import { pessoa as pessoa_router } from "./index.js";
+import { pessoaRouter } from "../routers/index.js";
 
-const controller = {
+const pacienteController = {
 	insert: async (tuple) => {
 		const { tipo_sanguineo, peso, altura } = tuple;
-		const common = await pessoa_router.insert(tuple);
+		const common = await pessoaRouter.insert(tuple);
 		const codigo = common.codigo;
-		return await crud.c(paciente, {
+		return await paciente.create({
 			codigo,
 			tipo_sanguineo,
 			peso,
@@ -17,7 +16,7 @@ const controller = {
 	select: async (options) => {
 		const { spec } = options;
 		if (spec === "lista") {
-			const pacientes = await crud.r(paciente, {
+			const pacientes = await paciente.findAll({
 				attributes: ["tipo_sanguineo"],
 				include: [
 					{
@@ -34,13 +33,7 @@ const controller = {
 			});
 			return query;
 		}
-	},
-	update: async (tuple, options) => {
-		return await crud.u(paciente, tuple, options);
-	},
-	remove: async (options) => {
-		return await crud.d(paciente, options);
 	}
 };
 
-export default controller;
+export default pacienteController;

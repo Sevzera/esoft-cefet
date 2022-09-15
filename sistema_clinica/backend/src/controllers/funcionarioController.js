@@ -1,13 +1,12 @@
-import crud from "./utils/crud.js";
 import { funcionario, pessoa, medico } from "../models/index.js";
-import { pessoa as pessoa_router } from "./index.js";
+import { pessoaRouter } from "../routers/index.js";
 
 const controller = {
 	insert: async (tuple) => {
 		const { data_contrato, salario, senha_hash } = tuple;
-		const common = await pessoa_router.insert(tuple);
+		const common = await pessoaRouter.insert(tuple);
 		const codigo = common.codigo;
-		return await crud.c(funcionario, {
+		return await funcionario.create({
 			codigo,
 			data_contrato,
 			salario,
@@ -17,7 +16,7 @@ const controller = {
 	select: async (options) => {
 		const { spec } = options;
 		if (spec === "lista") {
-			const funcionarios = await crud.r(funcionario, {
+			const funcionarios = await funcionario.findAll({
 				attributes: ["salario"],
 				include: [
 					{
@@ -44,7 +43,7 @@ const controller = {
 			return query;
 		} else if (spec === "login") {
 			const { email, senha_hash } = options;
-			const funcionarios = await crud.r(funcionario, {
+			const funcionarios = await funcionario.findAll({
 				where: { senha_hash: senha_hash },
 				include: [
 					{
@@ -72,13 +71,6 @@ const controller = {
 				return null;
 			}
 		}
-	},
-
-	update: async (tuple, options) => {
-		return await crud.u(funcionario, tuple, options);
-	},
-	remove: async (options) => {
-		return await crud.d(funcionario, options);
 	}
 };
 

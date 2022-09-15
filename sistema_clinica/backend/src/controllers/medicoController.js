@@ -1,13 +1,12 @@
-import crud from "./utils/crud.js";
 import { medico, pessoa, funcionario } from "../models/index.js";
-import { funcionario as funcionario_router } from "./index.js";
+import { funcionarioRouter } from "../routers/index.js";
 
 const controller = {
 	insert: async (tuple) => {
 		const { especialidade, crm } = tuple;
-		const common = await funcionario_router.insert(tuple);
+		const common = await funcionarioRouter.insert(tuple);
 		const codigo = common.codigo;
-		return await crud.c(medico, {
+		return await medico.create({
 			codigo,
 			especialidade,
 			crm
@@ -19,7 +18,7 @@ const controller = {
 			let query;
 			const { especialidade } = options;
 			if (especialidade) {
-				const medicos = await crud.r(medico, {
+				const medicos = await medico.findAll({
 					attributes: ["codigo"],
 					where: { especialidade },
 					include: [
@@ -43,7 +42,7 @@ const controller = {
 					return { codigo, nome };
 				});
 			} else {
-				const medicos = await crud.r(medico, {
+				const medicos = await medico.findAll({
 					attributes: ["especialidade"],
 					group: ["especialidade"]
 				});
@@ -51,13 +50,7 @@ const controller = {
 			}
 			return query;
 		}
-		return await crud.r(medico, options);
-	},
-	update: async (tuple, options) => {
-		return await crud.u(medico, tuple, options);
-	},
-	remove: async (options) => {
-		return await crud.d(medico, options);
+		return await medico.findAll(options);
 	}
 };
 

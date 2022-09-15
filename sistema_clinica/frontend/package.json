@@ -4,10 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"lint": "npx eslint \"./src/**/*.js\" \"./src/**/*.jsx\" --fix",
 		"server": "npx webpack serve --open",
-		"start": "npm run server",
-		"build": "npx webpack build"
+		"start": "npm run server"
 	},
 	"keywords": [],
 	"author": "",

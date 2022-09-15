@@ -1,6 +1,6 @@
 import { pessoa, endereco } from "../models/index.js";
 
-const controller = {
+const pessoaController = {
 	insert: async (tuple) => {
 		const { nome, email, cep, logradouro, bairro, cidade, estado, telefone } =
 			tuple;
@@ -23,7 +23,6 @@ const controller = {
 		});
 	},
 	select: async (options) => {
-		
 		return await pessoa.findAll(options);
 	},
 	update: async (tuple, options) => {
@@ -34,4 +33,4 @@ const controller = {
 	}
 };
 
-export default controller;
+export default pessoaController;
