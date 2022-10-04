@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 function Layout({ user, handleLogout }) {
 	return (
-		<div className="absolute flex flex-col w-full h-full bg-slate-500">
+		<div className="absolute flex flex-col w-full h-full bg-white">
 			<div className="w-full">
 				<Header />
 			</div>

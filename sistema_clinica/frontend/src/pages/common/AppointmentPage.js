@@ -79,7 +79,7 @@ function AppointmentPage() {
 				</label>
 				<label>Especialidade</label>
 				<select
-					className="px-3 py-3 text-sm w-2/5 text-center"
+					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
 					name="especialidade"
 					onChange={(e) => {
 						e.preventDefault();
@@ -95,7 +95,7 @@ function AppointmentPage() {
 				</select>
 				<label>Profissional</label>
 				<select
-					className="px-3 py-3 text-sm w-2/5 text-center"
+					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
 					name="medico_nome"
 					onChange={(e) => {
 						e.preventDefault();
@@ -111,7 +111,7 @@ function AppointmentPage() {
 				</select>
 				<label>Data</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center"
+					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
 					type="date"
 					name="data"
 					onChange={(e) => {
@@ -120,7 +120,7 @@ function AppointmentPage() {
 					}}
 				/>
 				<label>Horário</label>
-				<select className="px-3 py-3 text-sm w-2/5 text-center" name="horario">
+				<select className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black" name="horario">
 					<option hidden selected>
 						Horário
 					</option>
@@ -130,27 +130,27 @@ function AppointmentPage() {
 				</select>
 				<label>Nome</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center"
+					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
 					type="text"
 					name="nome"
 					placeholder="Nome"
 				/>
 				<label>Email</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center"
+					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
 					type="text"
 					name="email"
 					placeholder="Email"
 				/>
 				<label>Telefone</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center"
+					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
 					type="text"
 					name="telefone"
 					placeholder="Telefone"
 				/>
 				<input
-					className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#1e293b] hover:text-white rounded-2xl"
+					className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#48dbdb] rounded-2xl"
 					type="submit"
 					value="Submit"
 				></input>

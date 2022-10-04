@@ -19,7 +19,7 @@ function GalleryPage() {
 				<div className="h-[95%] w-auto">
 					<img src={image} className="h-full w-auto" alt={description} />
 				</div>
-				<div className="bg-blue-400 h-[5%]">
+				<div className="bg-[#48dbdb] rounded-b-2xl h-[5%]">
 					<p className="text-center font-inter text-2xl">{description}</p>
 				</div>
 			</div>

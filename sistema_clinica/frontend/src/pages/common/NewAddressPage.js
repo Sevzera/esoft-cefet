@@ -56,7 +56,7 @@ function NewAddressPage() {
 				</label>
 				<label>CEP</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center"
+					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
 					type="text"
 					name="cep"
 					placeholder="CEP"
@@ -68,34 +68,34 @@ function NewAddressPage() {
 				/>
 				<label>Logradouro</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center"
+					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
 					type="text"
 					name="logradouro"
 					placeholder="Logradouro"
 				/>
 				<label>Bairro</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center"
+					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
 					type="text"
 					name="bairro"
 					placeholder="Bairro"
 				/>
 				<label>Cidade</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center"
+					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
 					type="text"
 					name="cidade"
 					placeholder="Cidade"
 				/>
 				<label>Estado</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center"
+					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
 					type="text"
 					name="estado"
 					placeholder="Estado"
 				/>
 				<input
-					className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#1e293b] hover:text-white rounded-2xl"
+					className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#48dbdb] rounded-2xl"
 					type="submit"
 					value="Submit"
 				></input>

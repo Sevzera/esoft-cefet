@@ -78,7 +78,7 @@ function NewBlock({ type }) {
 					/>
 				)}
 				<input
-					className="uppercase mt-[10px] text-sm font-bold py-3 shadow hover:bg-[#1e293b] hover:text-white rounded-2xl"
+					className="uppercase mt-[10px] text-sm font-bold py-3 shadow hover:bg-[#48dbdb] rounded-2xl"
 					type="submit"
 					value="Submit"
 				></input>

@@ -20,20 +20,20 @@ function LoginPage({ handleLogin, isLogged }) {
 				<label className="uppercase text-center mb-3 font-bold">LOGIN</label>
 				<label>Email</label>
 				<input
-					className="px-3 py-3 text-sm w-1/6 text-center"
+					className="px-3 py-3 text-sm w-1/6 text-center border-[1px] border-black"
 					type="text"
 					name="email"
 					placeholder="Email"
 				/>
 				<label>Senha</label>
 				<input
-					className="px-3 py-3 text-sm w-1/6 text-center"
-					type="text"
+					className="px-3 py-3 text-sm w-1/6 text-center border-[1px] border-black"
+					type="password"
 					name="senha_hash"
 					placeholder="Senha"
 				/>
 				<input
-					className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#1e293b] hover:text-white rounded-2xl"
+					className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#48dbdb] rounded-2xl"
 					type="submit"
 					value="Submit"
 				></input>
