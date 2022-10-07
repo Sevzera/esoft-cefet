@@ -35,7 +35,7 @@ function LoginForm({ handleLogin, isLogged }) {
 					placeholder="Senha"
 				/>
 				<input
-					className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#48dbdb] rounded-2xl"
+					className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#48dbdb] rounded-2xl w-1/5"
 					type="submit"
 					value="Submit"
 				></input>

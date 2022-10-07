@@ -9,8 +9,9 @@ import NewAddressForm from "./pages/common/components/NewAddressForm";
 import NewAppointmentForm from "./pages/common/components/NewAppointmentForm";
 import LoginForm from "./pages/common/components/LoginForm";
 import AdminPage from "./pages/admin/AdminPage";
-import NewBlock from "./pages/admin/components/NewBlock";
 import ListBlock from "./pages/admin/components/ListBlock";
+import NewEmployeeForm from "./pages/admin/components/NewEmployeeForm";
+import NewPatientForm from "./pages/admin/components/NewPatientForm";
 
 function App() {
 	const [user, setUser] = React.useState({
@@ -89,7 +90,7 @@ function App() {
 						path="admin/novo-funcionario"
 						element={
 							user.isLogged ? (
-								<AdminPage children={<NewBlock type="funcionario" />} />
+								<AdminPage children={<NewEmployeeForm />} />
 							) : (
 								<h1>ACESSO RESTRITO</h1>
 							)
@@ -99,7 +100,7 @@ function App() {
 						path="admin/novo-paciente"
 						element={
 							user.isLogged ? (
-								<AdminPage children={<NewBlock type="paciente" />} />
+								<AdminPage children={<NewPatientForm />} />
 							) : (
 								<h1>ACESSO RESTRITO</h1>
 							)

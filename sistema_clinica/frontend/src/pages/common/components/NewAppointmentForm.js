@@ -121,10 +121,7 @@ function NewAppointmentForm() {
 					}}
 				/>
 				<label>Horário</label>
-				<select
-					className={input_box_style}
-					name="horario"
-				>
+				<select className={input_box_style} name="horario">
 					<option hidden selected>
 						Horário
 					</option>
@@ -154,7 +151,7 @@ function NewAppointmentForm() {
 					placeholder="Telefone"
 				/>
 				<input
-					className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#48dbdb] rounded-2xl"
+					className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#48dbdb] rounded-2xl w-1/5"
 					type="submit"
 					value="Submit"
 				></input>

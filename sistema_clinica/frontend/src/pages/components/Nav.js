@@ -20,7 +20,7 @@ function Nav({ isLogged }) {
 					<Link to="/agendamento">Agendamento</Link>
 				</div>
 			)}
-			<div className="flex flex-col justify-center w-1/12">
+			<div className="flex flex-col justify-center items-center w-1/12">
 				{isLogged ? (
 					<Link to="/home" onClick={() => handleLogout}>
 						Logout

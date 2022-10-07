@@ -5,6 +5,7 @@ const ListBlock = ({ type, crm }) => {
 
 	const [list, setList] = React.useState([]);
 	const [filterByCRM, setFilterByCRM] = React.useState(false);
+	const text_style = "text-2xl text-center"
 
 	async function updateList(filter = "") {
 		const res = await fetch(
@@ -30,7 +31,7 @@ const ListBlock = ({ type, crm }) => {
 	}, [filterByCRM]);
 
 	return (
-		<div className="bg-gray-600 border-2 w-8/12 h-4/6 flex flex-col shadow-lg rounded-lg">
+		<div className="bg-[#48dbdb] border-2 w-8/12 h-4/6 flex flex-col shadow-lg rounded-lg">
 			{crm && (
 				<>
 					<label for="filterByCRM" className="text-center text-2xl">
@@ -93,70 +94,46 @@ const ListBlock = ({ type, crm }) => {
 				{list.map((item) => (
 					<li
 						key={item.codigo}
-						className="flex flex-row items-center border-b-2 border-gray-300"
+						className="flex flex-row items-center border-b-2 border-black"
 					>
 						{type === "funcionario" && (
 							<>
-								<span className="text-2xl text-center w-[25%]">
-									{item.nome}
-								</span>
-								<span className="text-2xl text-center w-[25%]">
-									{item.salario}
-								</span>
-								<span className="text-2xl text-center w-[25%]">
-									{item.email}
-								</span>
-								<span className="text-2xl text-center w-[25%]">
-									{item.telefone}
-								</span>
+								<span className={`w-[25%] ${text_style}`}>{item.nome}</span>
+								<span className={`w-[25%] ${text_style}`}>{item.salario}</span>
+								<span className={`w-[25%] ${text_style}`}>{item.email}</span>
+								<span className={`w-[25%] ${text_style}`}>{item.telefone}</span>
 							</>
 						)}
 						{type === "endereco" && (
 							<>
-								<span className="text-2xl text-center w-[20%]">{item.cep}</span>
-								<span className="text-2xl text-center w-[20%]">
+								<span className={`w-[20%] ${text_style}`}>{item.cep}</span>
+								<span className={`w-[20%] ${text_style}`}>
 									{item.logradouro}
 								</span>
-								<span className="text-2xl text-center w-[20%]">
-									{item.bairro}
-								</span>
-								<span className="text-2xl text-center w-[20%]">
-									{item.cidade}
-								</span>
-								<span className="text-2xl text-center w-[20%]">
-									{item.estado}
-								</span>
+								<span className={`w-[20%] ${text_style}`}>{item.bairro}</span>
+								<span className={`w-[20%] ${text_style}`}>{item.cidade}</span>
+								<span className={`w-[20%] ${text_style}`}>{item.estado}</span>
 							</>
 						)}
 						{type === "paciente" && (
 							<>
-								<span className="text-2xl text-center w-[25%]">
-									{item.nome}
-								</span>
-								<span className="text-2xl text-center w-[25%]">
+								<span className={`w-[25%] ${text_style}`}>{item.nome}</span>
+								<span className={`w-[25%] ${text_style}`}>
 									{item.tipo_sanguineo}
 								</span>
-								<span className="text-2xl text-center w-[25%]">
-									{item.email}
-								</span>
-								<span className="text-2xl text-center w-[25%]">
-									{item.telefone}
-								</span>
+								<span className={`w-[25%] ${text_style}`}>{item.email}</span>
+								<span className={`w-[25%] ${text_style}`}>{item.telefone}</span>
 							</>
 						)}
 						{type === "agenda" && (
 							<>
-								<span className="text-2xl text-center w-[20%]">
-									{item.data}
-								</span>
-								<span className="text-2xl text-center w-[20%]">
+								<span className={`w-[20%] ${text_style}`}>{item.data}</span>
+								<span className={`w-[20%] ${text_style}`}>
 									{item.horario + ":00"}
 								</span>
-								<span className="text-2xl text-center w-[20%]">
-									{item.nome}
-								</span>
-								<span className="text-2xl text-center w-[20%]">{item.crm}</span>
-								<span className="text-2xl text-center w-[20%]">
+								<span className={`w-[20%] ${text_style}`}>{item.nome}</span>
+								<span className={`w-[20%] ${text_style}`}>{item.crm}</span>
+								<span className={`w-[20%] ${text_style}`}>
 									{item.especialidade}
 								</span>
 							</>
