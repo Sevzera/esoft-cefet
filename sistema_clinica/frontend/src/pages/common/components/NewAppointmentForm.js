@@ -60,7 +60,6 @@ function NewAppointmentForm() {
 			body: JSON.stringify(data)
 		});
 		const result = await res.json();
-		console.log(result);
 	}
 
 	React.useEffect(() => {

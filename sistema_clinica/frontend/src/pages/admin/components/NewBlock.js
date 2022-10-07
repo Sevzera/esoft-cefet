@@ -53,7 +53,6 @@ function NewBlock({ type }) {
 			body: JSON.stringify(data)
 		});
 		const res = await result.json();
-		console.log(res);
 	}
 
 	return (

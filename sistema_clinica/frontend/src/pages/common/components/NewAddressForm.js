@@ -20,7 +20,6 @@ function NewAddressForm() {
 			body: JSON.stringify(json)
 		});
 		const result = await res.json();
-		console.log(result);
 	}
 
 	async function getAddress(e) {
@@ -65,7 +64,6 @@ function NewAddressForm() {
 					placeholder="CEP"
 					onChange={(e) => {
 						e.preventDefault();
-						console.log("cep changed");
 						getAddress(e);
 					}}
 				/>

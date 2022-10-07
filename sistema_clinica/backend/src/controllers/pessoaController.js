@@ -11,7 +11,7 @@ const pessoaController = {
 			cidade,
 			estado
 		});
-		return await await pessoa.create({
+		return await pessoa.create({
 			nome,
 			email,
 			cep,
@@ -24,12 +24,6 @@ const pessoaController = {
 	},
 	select: async (options) => {
 		return await pessoa.findAll(options);
-	},
-	update: async (tuple, options) => {
-		return await crud.u(pessoa, tuple, options);
-	},
-	remove: async (options) => {
-		return await crud.d(pessoa, options);
 	}
 };
 
