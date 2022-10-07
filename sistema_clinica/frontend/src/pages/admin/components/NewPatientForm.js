@@ -31,48 +31,46 @@ function NewPatientForm() {
 		const res = await result.json();
 	}
 	return (
-		<div>
-			<form
-				className="w-full h-full text-cs flex flex-col font-semibold text-center"
-				onSubmit={(e) => {
-					e.preventDefault();
-					handleSubmit(e);
-				}}
-			>
-				<div className="flex flex-col h-full w-full justify-start items-center">
-					<label className={title_style}>NOVO PACIENTE</label>
-					<PersonalInfoForm input_box_style={input_box_style} />
-					<div className="flex flex-col justify-center items-center">
-						<label for="peso">Peso</label>
-						<input
-							className={input_box_style}
-							type="number"
-							name="peso"
-							placeholder="Peso"
-						/>
-						<label for="altura">Altura</label>
-						<input
-							className={input_box_style}
-							type="number"
-							name="altura"
-							placeholder="Altura"
-						/>
-						<label for="tipo_sanguineo">Tipo Sanguineo</label>
-						<input
-							className={input_box_style}
-							type="text"
-							name="tipo_sanguineo"
-							placeholder="Tipo Sanguineo"
-						/>
-					</div>
+		<form
+			className="w-full h-full text-cs flex flex-col font-semibold text-center"
+			onSubmit={(e) => {
+				e.preventDefault();
+				handleSubmit(e);
+			}}
+		>
+			<div className="flex flex-col h-full w-full justify-start items-center">
+				<label className={title_style}>NOVO PACIENTE</label>
+				<PersonalInfoForm input_box_style={input_box_style} />
+				<div className="flex flex-col justify-center items-center">
+					<label for="peso">Peso</label>
 					<input
-						className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#48dbdb] rounded-2xl w-1/5"
-						type="submit"
-						value="Submit"
-					></input>
+						className={input_box_style}
+						type="number"
+						name="peso"
+						placeholder="Peso"
+					/>
+					<label for="altura">Altura</label>
+					<input
+						className={input_box_style}
+						type="number"
+						name="altura"
+						placeholder="Altura"
+					/>
+					<label for="tipo_sanguineo">Tipo Sanguineo</label>
+					<input
+						className={input_box_style}
+						type="text"
+						name="tipo_sanguineo"
+						placeholder="Tipo Sanguineo"
+					/>
 				</div>
-			</form>
-		</div>
+				<input
+					className="uppercase mt-[10px] text-sm font-bold py-3 px-5 shadow hover:bg-[#48dbdb] rounded-2xl w-1/5"
+					type="submit"
+					value="Submit"
+				></input>
+			</div>
+		</form>
 	);
 }
 

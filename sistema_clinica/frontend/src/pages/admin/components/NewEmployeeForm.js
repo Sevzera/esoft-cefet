@@ -44,7 +44,6 @@ function NewEmployeeForm() {
 		const res = await result.json();
 	}
 	return (
-		<div>
 			<form
 				className="w-full h-full text-cs flex flex-col font-semibold text-center"
 				onSubmit={(e) => {
@@ -122,7 +121,6 @@ function NewEmployeeForm() {
 					></input>
 				</div>
 			</form>
-		</div>
 	);
 }
 
