@@ -1,11 +1,11 @@
 import React from "react";
-import CommonFormComponent from "./CommonFormComponent";
+import PersonalInfoForm from "./PersonalInfoForm";
 
 function NewPatientForm({ input_box_style, title_style }) {
 	return (
 		<div className="flex flex-col h-full w-full justify-start items-center">
 			<label className={title_style}>NOVO PACIENTE</label>
-			<CommonFormComponent input_box_style={input_box_style} />
+			<PersonalInfoForm input_box_style={input_box_style} />
 			<div className="flex flex-col justify-center items-center">
 				<label for="peso">Peso</label>
 				<input

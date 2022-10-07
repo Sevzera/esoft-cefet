@@ -1,10 +1,12 @@
 import React from "react";
 
-function AppointmentPage() {
+function NewAppointmentForm() {
 	const [specialties, setSpecialties] = React.useState([]);
 	const [doctors, setDoctors] = React.useState([]);
 	const [selectedDoctorCode, setSelectedDoctorCode] = React.useState("");
 	const [openSlots, setOpenSlots] = React.useState([]);
+	const input_box_style =
+		"px-2 py-2 text-sm w-2/5 text-center border-[1px] border-black";
 
 	async function getSpecialties() {
 		const res = await fetch("http://localhost:1999/api/medico?spec=agendar");
@@ -67,7 +69,7 @@ function AppointmentPage() {
 
 	return (
 		<form
-			className="w-full h-full text-cs flex flex-col font-semibold"
+			className="w-full max-h-[95%] text-cs flex flex-col font-semibold"
 			onSubmit={(e) => {
 				e.preventDefault();
 				handleSubmit(e);
@@ -79,7 +81,7 @@ function AppointmentPage() {
 				</label>
 				<label>Especialidade</label>
 				<select
-					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
+					className={input_box_style}
 					name="especialidade"
 					onChange={(e) => {
 						e.preventDefault();
@@ -95,7 +97,7 @@ function AppointmentPage() {
 				</select>
 				<label>Profissional</label>
 				<select
-					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
+					className={input_box_style}
 					name="medico_nome"
 					onChange={(e) => {
 						e.preventDefault();
@@ -111,7 +113,7 @@ function AppointmentPage() {
 				</select>
 				<label>Data</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
+					className={input_box_style}
 					type="date"
 					name="data"
 					onChange={(e) => {
@@ -120,7 +122,10 @@ function AppointmentPage() {
 					}}
 				/>
 				<label>Horário</label>
-				<select className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black" name="horario">
+				<select
+					className={input_box_style}
+					name="horario"
+				>
 					<option hidden selected>
 						Horário
 					</option>
@@ -130,21 +135,21 @@ function AppointmentPage() {
 				</select>
 				<label>Nome</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
+					className={input_box_style}
 					type="text"
 					name="nome"
 					placeholder="Nome"
 				/>
 				<label>Email</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
+					className={input_box_style}
 					type="text"
 					name="email"
 					placeholder="Email"
 				/>
 				<label>Telefone</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
+					className={input_box_style}
 					type="text"
 					name="telefone"
 					placeholder="Telefone"
@@ -159,4 +164,4 @@ function AppointmentPage() {
 	);
 }
 
-export default AppointmentPage;
+export default NewAppointmentForm;

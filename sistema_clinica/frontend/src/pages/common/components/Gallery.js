@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import image from "../../assets/placeholder.jpg";
+import image from "../../../assets/placeholder.jpg";
 
-function GalleryPage() {
+function Gallery() {
 	const [images, setImages] = useState([]);
 
 	useEffect(() => {
@@ -20,7 +20,7 @@ function GalleryPage() {
 					<img src={image} className="h-full w-auto" alt={description} />
 				</div>
 				<div className="bg-[#48dbdb] rounded-b-2xl h-[5%]">
-					<p className="text-center font-inter text-2xl">{description}</p>
+					<p className="text-center font-inter text-lg">{description}</p>
 				</div>
 			</div>
 		);
@@ -35,4 +35,4 @@ function GalleryPage() {
 	);
 }
 
-export default GalleryPage;
+export default Gallery;

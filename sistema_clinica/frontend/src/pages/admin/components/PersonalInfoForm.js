@@ -1,6 +1,6 @@
 import React from "react";
 
-function CommonFormComponent({ input_box_style }) {
+function PersonalInfoForm({ input_box_style }) {
 	return (
 		<div>
 			<div className="flex flex-row justify-around">
@@ -79,4 +79,4 @@ function CommonFormComponent({ input_box_style }) {
 	);
 }
 
-export default CommonFormComponent;
+export default PersonalInfoForm;

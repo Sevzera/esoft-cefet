@@ -1,6 +1,6 @@
-import Logo from "../../assets/logo.svg";
+import Logo from "../../../assets/logo.svg";
 
-function HomePage() {
+function Home() {
 	return (
 		<div className="w-full h-full flex flex-col justify-center">
 			<div className="text-center">
@@ -41,4 +41,4 @@ function HomePage() {
 	);
 }
 
-export default HomePage;
+export default Home;

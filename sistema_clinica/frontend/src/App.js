@@ -2,11 +2,12 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import "./css/style.css";
-import HomePage from "./pages/common/HomePage";
-import GalleryPage from "./pages/common/GalleryPage";
-import NewAddressPage from "./pages/common/NewAddressPage";
-import AppointmentPage from "./pages/common/AppointmentPage";
-import LoginPage from "./pages/common/LoginPage";
+import CommonPage from "./pages/common/CommonPage";
+import Home from "./pages/common/components/Home";
+import Gallery from "./pages/common/components/Gallery";
+import NewAddressForm from "./pages/common/components/NewAddressForm";
+import NewAppointmentForm from "./pages/common/components/NewAppointmentForm";
+import LoginForm from "./pages/common/components/LoginForm";
 import AdminPage from "./pages/admin/AdminPage";
 import NewBlock from "./pages/admin/components/NewBlock";
 import ListBlock from "./pages/admin/components/ListBlock";
@@ -58,16 +59,29 @@ function App() {
 					path="/"
 					element={<Layout handleLogout={() => handleLogout()} user={user} />}
 				>
-					<Route path="home" element={<HomePage />} />
-					<Route path="galeria" element={<GalleryPage />} />
-					<Route path="novo-endereco" element={<NewAddressPage />} />
-					<Route path="agendamento" element={<AppointmentPage />} />
+					<Route path="home" element={<CommonPage children={<Home />} />} />
+					<Route
+						path="galeria"
+						element={<CommonPage children={<Gallery />} />}
+					/>
+					<Route
+						path="novo-endereco"
+						element={<CommonPage children={<NewAddressForm />} />}
+					/>
+					<Route
+						path="agendamento"
+						element={<CommonPage children={<NewAppointmentForm />} />}
+					/>
 					<Route
 						path="login"
 						element={
-							<LoginPage
-								handleLogin={(e) => handleLogin(e)}
-								isLogged={user.isLogged}
+							<CommonPage
+								children={
+									<LoginForm
+										handleLogin={(e) => handleLogin(e)}
+										isLogged={user.isLogged}
+									/>
+								}
 							/>
 						}
 					/>

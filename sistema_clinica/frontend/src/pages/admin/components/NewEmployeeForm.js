@@ -1,6 +1,6 @@
 import React from "react";
 
-import CommonFormComponent from "./CommonFormComponent";
+import PersonalInfoForm from "./PersonalInfoForm";
 
 function NewEmployeeForm({ input_box_style, title_style }) {
 	const [isDoctor, setIsDoctor] = React.useState(false);
@@ -45,7 +45,7 @@ function NewEmployeeForm({ input_box_style, title_style }) {
 						</div>
 					</>
 				)}
-				<CommonFormComponent input_box_style={input_box_style} />
+				<PersonalInfoForm input_box_style={input_box_style} />
 				<div className="flex flex-col justify-center items-center">
 					<label for="data_contrato">Data Inicio</label>
 					<input

@@ -1,7 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function LoginPage({ handleLogin, isLogged }) {
+function LoginForm({ handleLogin, isLogged }) {
+	const input_box_style =
+		"px-2 py-2 text-sm w-1/6 text-center border-[1px] border-black";
 	const navigate = useNavigate();
 	React.useEffect(() => {
 		if (isLogged) navigate("/admin/lista/consultas");
@@ -20,14 +22,14 @@ function LoginPage({ handleLogin, isLogged }) {
 				<label className="uppercase text-center mb-3 font-bold">LOGIN</label>
 				<label>Email</label>
 				<input
-					className="px-3 py-3 text-sm w-1/6 text-center border-[1px] border-black"
+					className={input_box_style}
 					type="text"
 					name="email"
 					placeholder="Email"
 				/>
 				<label>Senha</label>
 				<input
-					className="px-3 py-3 text-sm w-1/6 text-center border-[1px] border-black"
+					className={input_box_style}
 					type="password"
 					name="senha_hash"
 					placeholder="Senha"
@@ -42,4 +44,4 @@ function LoginPage({ handleLogin, isLogged }) {
 	);
 }
 
-export default LoginPage;
+export default LoginForm;

@@ -6,16 +6,16 @@ import { Outlet } from "react-router-dom";
 function Layout({ user, handleLogout }) {
 	return (
 		<div className="absolute flex flex-col w-full h-full bg-white">
-			<div className="w-full">
+			<div className="w-full h-[10%]">
 				<Header />
 			</div>
-			<div className="w-full">
+			<div className="w-full h-[5%]">
 				<Nav isLogged={user.isLogged} handleLogout={() => handleLogout()} />
 			</div>
-			<div className="w-full h-full">
+			<div className="w-full h-[80%]">
 				<Outlet />
 			</div>
-			<div className="w-full">
+			<div className="w-full h-[5%]">
 				<Footer />
 			</div>
 		</div>

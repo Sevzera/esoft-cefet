@@ -1,4 +1,7 @@
-function NewAddressPage() {
+function NewAddressForm() {
+	const input_box_style =
+		"px-2 py-2 text-sm w-2/5 text-center border-[1px] border-black";
+
 	async function handleSubmit(e) {
 		e.preventDefault();
 		const form = e.target;
@@ -44,7 +47,7 @@ function NewAddressPage() {
 
 	return (
 		<form
-			className="w-full h-full text-cs flex flex-col font-semibold"
+			className="w-full max-h-[95%] text-cs flex flex-col font-semibold"
 			onSubmit={(e) => {
 				e.preventDefault();
 				handleSubmit(e);
@@ -56,7 +59,7 @@ function NewAddressPage() {
 				</label>
 				<label>CEP</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
+					className={input_box_style}
 					type="text"
 					name="cep"
 					placeholder="CEP"
@@ -68,28 +71,28 @@ function NewAddressPage() {
 				/>
 				<label>Logradouro</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
+					className={input_box_style}
 					type="text"
 					name="logradouro"
 					placeholder="Logradouro"
 				/>
 				<label>Bairro</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
+					className={input_box_style}
 					type="text"
 					name="bairro"
 					placeholder="Bairro"
 				/>
 				<label>Cidade</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
+					className={input_box_style}
 					type="text"
 					name="cidade"
 					placeholder="Cidade"
 				/>
 				<label>Estado</label>
 				<input
-					className="px-3 py-3 text-sm w-2/5 text-center border-[1px] border-black"
+					className={input_box_style}
 					type="text"
 					name="estado"
 					placeholder="Estado"
@@ -104,4 +107,4 @@ function NewAddressPage() {
 	);
 }
 
-export default NewAddressPage;
+export default NewAddressForm;
