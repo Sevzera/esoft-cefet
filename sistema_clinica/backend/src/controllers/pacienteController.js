@@ -1,10 +1,10 @@
 import { paciente, pessoa } from "../models/index.js";
-import { pessoaRouter } from "../routers/index.js";
+import { pessoaController } from "../controllers/index.js";
 
 const pacienteController = {
 	insert: async (tuple) => {
 		const { tipo_sanguineo, peso, altura } = tuple;
-		const common = await pessoaRouter.insert(tuple);
+		const common = await pessoaController.insert(tuple);
 		const codigo = common.codigo;
 		return await paciente.create({
 			codigo,

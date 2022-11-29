@@ -1,10 +1,10 @@
 import { medico, pessoa, funcionario } from "../models/index.js";
-import { funcionarioRouter } from "../routers/index.js";
+import { funcionarioController } from "../controllers/index.js";
 
 const controller = {
 	insert: async (tuple) => {
 		const { especialidade, crm } = tuple;
-		const common = await funcionarioRouter.insert(tuple);
+		const common = await funcionarioController.insert(tuple);
 		const codigo = common.codigo;
 		return await medico.create({
 			codigo,
