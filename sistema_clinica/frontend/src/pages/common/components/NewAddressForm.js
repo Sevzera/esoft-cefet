@@ -12,14 +12,18 @@ function NewAddressForm() {
 			cidade: form.cidade.value,
 			estado: form.estado.value
 		};
-		const res = await fetch("http://localhost:1999/api/endereco", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(json)
-		});
-		const result = await res.json();
+		try {
+			const res = await fetch("http://localhost:1999/api/endereco", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(json)
+			});
+			alert("Endereço cadastrado com sucesso!");
+		} catch (err) {
+			console.log(err);
+		}
 	}
 
 	async function getAddress(e) {
@@ -47,7 +51,10 @@ function NewAddressForm() {
 	return (
 		<form
 			className="w-full max-h-[95%] text-cs flex flex-col font-semibold"
-			onSubmit={(e) => handleSubmit(e)}
+			onSubmit={(e) => {
+				e.preventDefault();
+				handleSubmit(e);
+			}}
 		>
 			<div className="flex flex-col h-full w-full justify-around items-center">
 				<label className="uppercase text-center mb-3 font-bold">

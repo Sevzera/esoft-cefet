@@ -52,14 +52,18 @@ function NewAppointmentForm() {
 			email: form.email.value,
 			telefone: form.telefone.value
 		};
-		const res = await fetch("http://localhost:1999/api/agenda", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(data)
-		});
-		const result = await res.json();
+		try {
+			const res = await fetch("http://localhost:1999/api/agenda", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(data)
+			});
+			alert("Consulta cadastrada com sucesso!");
+		} catch (err) {
+			console.log(err);
+		}
 	}
 
 	React.useEffect(() => {
@@ -69,7 +73,10 @@ function NewAppointmentForm() {
 	return (
 		<form
 			className="w-full max-h-[95%] text-cs flex flex-col font-semibold"
-			onSubmit={(e) => handleSubmit(e)}
+			onSubmit={(e) => {
+				e.preventDefault();
+				handleSubmit(e);
+			}}
 		>
 			<div className="flex flex-col h-full w-full justify-around items-center">
 				<label className="uppercase text-center mb-3 font-bold">

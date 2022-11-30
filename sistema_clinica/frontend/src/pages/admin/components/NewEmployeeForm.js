@@ -34,19 +34,26 @@ function NewEmployeeForm() {
 		} else {
 			endpoint = "funcionario";
 		}
-		const result = await fetch("http://localhost:1999/api/" + endpoint, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(data)
-		});
-		const res = await result.json();
+		try {
+			const res = await fetch("http://localhost:1999/api/" + endpoint, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(data)
+			});
+			alert("Funcionário cadastrado com sucesso!");
+		} catch (err) {
+			console.log(err);
+		}
 	}
 	return (
 		<form
 			className="w-full h-full text-cs flex flex-col font-semibold text-center"
-			onSubmit={(e) => handleSubmit(e)}
+			onSubmit={(e) => {
+				e.preventDefault();
+				handleSubmit(e);
+			}}
 		>
 			<div className="flex flex-col h-full w-full justify-start items-center">
 				<label className={title_style}>NOVO FUNCIONARIO</label>
