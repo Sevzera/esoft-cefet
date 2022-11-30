@@ -54,6 +54,7 @@ function NewPatientForm() {
 						className={input_box_style}
 						type="number"
 						name="altura"
+						step={0.01}
 						placeholder="Altura"
 					/>
 					<label for="tipo_sanguineo">Tipo Sanguineo</label>
