@@ -4,13 +4,15 @@ const pessoaController = {
 	insert: async (tuple) => {
 		const { nome, email, cep, logradouro, bairro, cidade, estado, telefone } =
 			tuple;
-		await endereco.create({
-			cep,
-			logradouro,
-			bairro,
-			cidade,
-			estado
-		});
+		if (await endereco.findOne({ where: { cep } }) === null) {
+			await endereco.create({
+				cep,
+				logradouro,
+				bairro,
+				cidade,
+				estado
+			});
+		}
 		return await pessoa.create({
 			nome,
 			email,
