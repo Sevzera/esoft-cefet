@@ -46,10 +46,7 @@ function NewEmployeeForm() {
 	return (
 		<form
 			className="w-full h-full text-cs flex flex-col font-semibold text-center"
-			onSubmit={(e) => {
-				e.preventDefault();
-				handleSubmit(e);
-			}}
+			onSubmit={(e) => handleSubmit(e)}
 		>
 			<div className="flex flex-col h-full w-full justify-start items-center">
 				<label className={title_style}>NOVO FUNCIONARIO</label>

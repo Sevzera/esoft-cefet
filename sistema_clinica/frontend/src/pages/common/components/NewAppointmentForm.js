@@ -69,10 +69,7 @@ function NewAppointmentForm() {
 	return (
 		<form
 			className="w-full max-h-[95%] text-cs flex flex-col font-semibold"
-			onSubmit={(e) => {
-				e.preventDefault();
-				handleSubmit(e);
-			}}
+			onSubmit={(e) => handleSubmit(e)}
 		>
 			<div className="flex flex-col h-full w-full justify-around items-center">
 				<label className="uppercase text-center mb-3 font-bold">
